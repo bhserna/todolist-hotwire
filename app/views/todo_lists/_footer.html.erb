@@ -1,0 +1,9 @@
+<div id="footer" class="pa3 bt b--light-blue relative f5 flex justify-between">
+  <%= pluralize todo_list.todos.active.count, "item" %> left
+
+  <ul class="list flex pa0 ma0 justify-between w-third">
+    <li><%= filter_button todo_list, "All", :all %></li>
+    <li><%= filter_button todo_list, "Active", :active %></li>
+    <li><%= filter_button todo_list, "Completed", :completed %></li>
+  </ul>
+</div>

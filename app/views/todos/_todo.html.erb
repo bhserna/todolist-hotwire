@@ -1,0 +1,19 @@
+<%= turbo_frame_tag dom_id(todo) do %>
+  <div class="pa3 bt b--light-blue relative">
+    <%= link_to "", edit_todo_path(todo), class: "absolute absolute--fill" %>
+
+    <%= form_with model: todo, url: toggle_todo_path(todo), class: "fl relative z-1 mr2", data: { controller: "checkbox" } do |form| %>
+      <%= form.check_box :completed, data: { action: "checkbox#submit" } %>
+      <%= form.button "", class: "dn", data: { "checkbox-target" => "button" } %>
+    <% end %>
+
+    <%= button_to "x", todo,
+      method: :delete,
+      class: "fr bg-transparent bn pointer bw2 blue hover-dark-blue grow relative z-1",
+      form: { "data-turbo-frame": "_top" } %>
+
+    <%= content_tag :span, class: ("silver strike" if todo.completed?) do %>
+      <%= todo.description %>
+    <% end %>
+  </div>
+<% end %>
