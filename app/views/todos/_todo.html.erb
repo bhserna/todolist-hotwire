@@ -4,7 +4,7 @@
 
     <%= form_with model: todo, url: toggle_todo_path(todo),
       class: "fl relative z-1 mr2",
-      data: { "turbo-frame": "_top", controller: "checkbox" } do |form| %>
+      data: { "turbo-frame": dom_id(todo_list), controller: "checkbox" } do |form| %>
       <%= form.check_box :completed, data: { action: "checkbox#submit" } %>
       <%= form.button "", class: "dn", data: { "checkbox-target" => "button" } %>
     <% end %>
@@ -12,7 +12,7 @@
     <%= button_to "x", todo,
       method: :delete,
       class: "fr bg-transparent bn pointer bw2 blue hover-dark-blue grow relative z-1",
-      form: { "data-turbo-frame": "_top" } %>
+      form: { "data-turbo-frame": dom_id(todo_list) } %>
 
     <%= content_tag :span, class: ("silver strike" if todo.completed?) do %>
       <%= todo.description %>

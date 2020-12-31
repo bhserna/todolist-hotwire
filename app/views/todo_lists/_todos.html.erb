@@ -1,5 +1,5 @@
 <div id="todos">
   <% todo_list.filtered_todos.each do |todo| %>
-    <%= render todo %>
+    <%= render todo, todo_list: todo_list %>
   <% end %>
 </div>
