@@ -1,7 +1,7 @@
 class TodosController < ApplicationController
   def create
     todo = todo_list.todos.create(todo_params)
-    redirect_to todo_list
+    redirect_to todo_list_path
   end
 
   def edit
@@ -10,17 +10,17 @@ class TodosController < ApplicationController
 
   def update
     todo.update(todo_params)
-    redirect_to todo_list
+    redirect_to todo_list_path
   end
 
   def toggle
     todo.toggle
-    redirect_to todo_list
+    redirect_to todo_list_path
   end
 
   def destroy
     todo.destroy
-    redirect_to todo_list
+    redirect_to todo_list_path
   end
 
   private
