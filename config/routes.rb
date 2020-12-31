@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resource :todo_list, only: [:show] do
+  get "/" => redirect("/todo_list")
+
+  resource :todo_list, only: [:show, :index] do
     patch :filter
   end
 
